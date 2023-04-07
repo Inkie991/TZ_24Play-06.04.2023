@@ -12,7 +12,6 @@ public class MovementController: MonoBehaviour
     private bool _isLocked;
     private bool _isGameStarted;
     private Sequence _sequence;
-    private Move _moveScript;
 
     private float rightBorderX = 2f;
     private float leftBorderX = -2f;
@@ -37,7 +36,6 @@ public class MovementController: MonoBehaviour
     {
         _isLocked = false;
         _sequence = DOTween.Sequence();
-        _moveScript = GetComponent<Move>();
     }
     
     void Update()

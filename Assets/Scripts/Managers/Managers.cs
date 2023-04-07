@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(GameplayManager))]
 [RequireComponent(typeof(CubesManager))]
+[RequireComponent(typeof(GeneratorManager))]
 
 public class Managers : MonoBehaviour
 {
     public static GameplayManager Gameplay { get; private set; }
     public static CubesManager Cubes { get; private set; }
+    public static GeneratorManager Generator { get; private set; }
 
     private List<IGameManager> _startSequence;
 
@@ -20,11 +22,13 @@ public class Managers : MonoBehaviour
         Application.targetFrameRate = 60;
         Gameplay = GetComponent<GameplayManager>();
         Cubes = GetComponent<CubesManager>();
+        Generator = GetComponent<GeneratorManager>();
 
         _startSequence = new List<IGameManager>
         {
             Gameplay,
-            Cubes
+            Cubes,
+            Generator
         };
 
         DontDestroyOnLoad(gameObject);
