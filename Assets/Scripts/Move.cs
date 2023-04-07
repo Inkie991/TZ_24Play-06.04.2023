@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public bool isMoving; //{ get; set; }
+    [SerializeField] private float speed;
+    [HideInInspector] public bool isMoving;
+    [HideInInspector] public float horizontalSpeed;
+    
 
     void Start()
     {
@@ -14,8 +17,8 @@ public class Move : MonoBehaviour
     {
         if (Managers.Gameplay.gameStatus == GameStatus.Initilaze && isMoving)
         {
-            transform.position += Vector3.forward * (7 * Time.deltaTime);
-            //_rigidbody.velocity = Vector3.forward* (70 * Time.deltaTime);
+            //transform.position += new Vector3(1.5f * horizontalSpeed * Time.deltaTime,0,1 * speed * Time.deltaTime);
+            transform.Translate(new Vector3(1.5f * horizontalSpeed * Time.deltaTime,0,1 * speed * Time.deltaTime));
         }
     }
 }

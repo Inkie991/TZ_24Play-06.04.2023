@@ -8,7 +8,7 @@ public class Collect : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "CollectCube")
+        if (collision.gameObject.CompareTag("CollectCube"))
         {
             if (isCollectingCubes)
             {
@@ -23,7 +23,7 @@ public class Collect : MonoBehaviour
             }
         }
     
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
             if (transform.position.y - collision.transform.position.y < 0.2f) Managers.Cubes.RemoveCube(transform);
         }

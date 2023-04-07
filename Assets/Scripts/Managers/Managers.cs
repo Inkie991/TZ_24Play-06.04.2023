@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(GameplayManager))]
@@ -15,6 +16,7 @@ public class Managers : MonoBehaviour
 
     void Awake()
     {
+        DOTween.Init();
         Application.targetFrameRate = 60;
         Gameplay = GetComponent<GameplayManager>();
         Cubes = GetComponent<CubesManager>();

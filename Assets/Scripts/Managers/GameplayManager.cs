@@ -16,8 +16,8 @@ public class GameplayManager : MonoBehaviour, IGameManager
         Debug.Log("Gameplay manager starting...");
 
         gameStatus = GameStatus.Initilaze;
-        Player = GameObject.Find("Player");
-        Stickman = Player.transform.GetChild(1);
+        Player = GameObject.FindWithTag("Player");
+        Stickman = Player.transform.GetChild(0).GetChild(0);
 
         Status = ManagerStatus.Started;
     }

@@ -11,7 +11,7 @@ public class CubesManager : MonoBehaviour, IGameManager
     private List<Transform> _cubes;
     public void Startup()
     {
-        Debug.Log("Gameplay manager starting...");
+        UnityEngine.Debug.Log("Gameplay manager starting...");
 
         MainCube = GameObject.Find("StartCube").transform.GetChild(0).gameObject;
         MainCube.GetComponent<Collect>().isCollectingCubes = true;
@@ -23,8 +23,8 @@ public class CubesManager : MonoBehaviour, IGameManager
 
     public void AddCube(Transform cube)
     {
-        if (_cubes.Count > 0) ReconstructPlayer(cube);
-        _cubes.Add(cube);
+        _cubes.Add(cube); 
+        ReconstructPlayer(cube);
     }
 
     public void RemoveCube(Transform cube)
@@ -34,31 +34,35 @@ public class CubesManager : MonoBehaviour, IGameManager
         {
             cube.GetComponent<Collect>().isCollectingCubes = false;
         }
+        _cubes.RemoveAt(_cubes.IndexOf(cube));
+        Debug();
         SetMainCube();
-        _cubes.Remove(cube);
     }
 
-    public Transform GetTopCube()
-    {
-        return _cubes[^1];
-    }
-
-    public Transform GetBottomCube()
+    private Transform GetBottomCube()
     {
         return _cubes[0];
     }
 
-    public void ReconstructPlayer(Transform cube)
+    private void ReconstructPlayer(Transform cube)
     {
-        cube.position = GetTopCube().position + Vector3.up;
+        if (_cubes.Count > 1) cube.position = _cubes[^2].position + Vector3.up;
         cube.parent.SetParent(_cubesHolder);
-        Managers.Gameplay.Stickman.position = cube.position + (Vector3.up * 1.1f);
+        Managers.Gameplay.Stickman.position = cube.position + (Vector3.up * 1.2f);
     }
 
-    public void SetMainCube()
+    private void SetMainCube()
     {
         MainCube = GetBottomCube().gameObject;
         MainCube.GetComponent<Collect>().isCollectingCubes = true;
+    }
+
+    private void Debug()
+    {
+        foreach (var cube in _cubes)
+        {
+            UnityEngine.Debug.Log(cube.name);
+        }
     }
 
 }
