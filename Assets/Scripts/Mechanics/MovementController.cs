@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -34,10 +35,18 @@ public class MovementController: MonoBehaviour
     
     private void Awake()
     {
-        _isLocked = false;
+        EventManager.AddListener<GameStartedEvent>(OnGameStarted);
+        EventManager.AddListener<PlayerLoseEvent>(OnPlayerLose);
+        _isLocked = true;
         _sequence = DOTween.Sequence();
     }
-    
+
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener<GameStartedEvent>(OnGameStarted);
+        EventManager.RemoveListener<PlayerLoseEvent>(OnPlayerLose);
+    }
+
     void Update()
     {
         if (_isLocked) return;
@@ -138,6 +147,20 @@ public class MovementController: MonoBehaviour
     {
         if (value == 0) return 0;
         return (int) Mathf.Sign(value);
+    }
+
+    void OnGameStarted(GameStartedEvent evt) => UnlockMovement();
+    void OnPlayerLose(PlayerLoseEvent evt) => LockMovement();
+
+    private void LockMovement()
+    {
+        _isLocked = true;
+        InputPoint.Reset();
+    }
+    
+    void UnlockMovement()
+    {
+        _isLocked = false;
     }
 
 }

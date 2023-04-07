@@ -35,7 +35,6 @@ public class CubesManager : MonoBehaviour, IGameManager
             cube.GetComponent<Collect>().isCollectingCubes = false;
         }
         _cubes.RemoveAt(_cubes.IndexOf(cube));
-        Debug();
         SetMainCube();
     }
 
@@ -55,14 +54,6 @@ public class CubesManager : MonoBehaviour, IGameManager
     {
         MainCube = GetBottomCube().gameObject;
         MainCube.GetComponent<Collect>().isCollectingCubes = true;
-    }
-
-    private void Debug()
-    {
-        foreach (var cube in _cubes)
-        {
-            UnityEngine.Debug.Log(cube.name);
-        }
     }
 
 }

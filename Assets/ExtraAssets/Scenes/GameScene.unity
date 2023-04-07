@@ -3571,6 +3571,7 @@ GameObject:
   - component: {fileID: 1645012806}
   - component: {fileID: 1645012805}
   - component: {fileID: 1645012804}
+  - component: {fileID: 1645012807}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -3632,6 +3633,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStatus: 0
   score: 0
+--- !u!114 &1645012807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645012802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec99913da4eacd043bbc8ccf7e1dd13e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackGroundPrefab: {fileID: 0}
 --- !u!1001 &1670412628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3726,6 +3740,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0.000000029802322}
+--- !u!1 &1753078829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2076399478334519671, guid: d9ce45b6decb1724584923dfb9761356,
+    type: 3}
+  m_PrefabInstance: {fileID: 975431896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1753078837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753078829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e772cdcaacca7641a4f12762f4af306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1778310345
 PrefabInstance:
   m_ObjectHideFlags: 0
