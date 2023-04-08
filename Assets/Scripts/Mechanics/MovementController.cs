@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,8 +10,8 @@ public class MovementController: MonoBehaviour
     private bool _isGameStarted;
     private Sequence _sequence;
 
-    private float rightBorderX = 2f;
-    private float leftBorderX = -2f;
+    private float _rightBorderX = 2f;
+    private float _leftBorderX = -2f;
 
     struct InputPoint
     {
@@ -127,8 +123,8 @@ public class MovementController: MonoBehaviour
             float posX = transform.position.x;
             float endValue = 0;
 
-            if (transform.position.x > 1.9 && InputPoint.Speed > 0) endValue = rightBorderX;
-            if (transform.position.x < -1.9 && InputPoint.Speed < 0) endValue = leftBorderX;
+            if (transform.position.x > 1.9 && InputPoint.Speed > 0) endValue = _rightBorderX;
+            if (transform.position.x < -1.9 && InputPoint.Speed < 0) endValue = _leftBorderX;
             
             
             _sequence = DOTween.Sequence();

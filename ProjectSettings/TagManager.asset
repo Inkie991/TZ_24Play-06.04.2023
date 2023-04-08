@@ -8,6 +8,8 @@ TagManager:
   - CollectCube
   - Wall
   - TrackWall
+  - Ground
+  - CubeHolder
   layers:
   - Default
   - TransparentFX

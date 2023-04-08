@@ -1,24 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CubesManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus Status { get; private set; }
 
-    [SerializeField] private Transform _cubesHolder;
+    private Transform _cubesHolder;
     public GameObject MainCube { get; private set; }
     private List<Transform> _cubes;
     public void Startup()
     {
-        UnityEngine.Debug.Log("Gameplay manager starting...");
-
-        MainCube = GameObject.Find("StartCube").transform.GetChild(0).gameObject;
-        MainCube.GetComponent<Collect>().isCollectingCubes = true;
-        _cubes = new List<Transform>();
-        AddCube(MainCube.transform);
+        Debug.Log("Cubes manager starting...");
         
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         Status = ManagerStatus.Started;
+    }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GameScene")
+        {
+            _cubesHolder = GameObject.FindWithTag("CubeHolder").transform;
+            MainCube = _cubesHolder.GetChild(0).GetChild(0).gameObject;
+            MainCube.GetComponent<Collect>().isCollectingCubes = true;
+            _cubes = new List<Transform>();
+            AddCube(MainCube.transform);
+        }
     }
 
     public void AddCube(Transform cube)

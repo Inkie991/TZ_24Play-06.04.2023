@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayManager : MonoBehaviour, IGameManager
 {
@@ -16,15 +15,18 @@ public class GameplayManager : MonoBehaviour, IGameManager
         Debug.Log("Gameplay manager starting...");
 
         gameStatus = GameStatus.Initilaze;
-        Player = GameObject.FindWithTag("Player");
-        Stickman = Player.transform.GetChild(0).GetChild(0);
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         Status = ManagerStatus.Started;
     }
     
-    void Start()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+        if (scene.name != "Preloader")
+        {
+            Player = GameObject.FindWithTag("Player");
+            Stickman = Player.transform.GetChild(0).GetChild(0);
+        }
     }
 
     void Update()
