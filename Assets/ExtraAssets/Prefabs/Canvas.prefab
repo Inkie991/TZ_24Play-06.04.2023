@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2777075130558978517}
   - component: {fileID: 2777075130558978516}
   m_Layer: 5
-  m_Name: Button
+  m_Name: TryAgain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 2777075130733557997}
   - component: {fileID: 2777075130733557996}
   m_Layer: 5
-  m_Name: HoldToStart
+  m_Name: TapToStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold to start
+  m_text: Tap to start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
