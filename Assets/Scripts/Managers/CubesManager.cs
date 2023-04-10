@@ -25,6 +25,7 @@ public class CubesManager : MonoBehaviour, IGameManager
             _cubesHolder = GameObject.FindWithTag("CubeHolder").transform;
             MainCube = _cubesHolder.GetChild(0).GetChild(0).gameObject;
             MainCube.GetComponent<Collect>().isCollectingCubes = true;
+            MainCube.GetComponent<TrailRenderer>().enabled = true;
             _cubes = new List<Transform>();
             AddCube(MainCube.transform);
         }
@@ -39,17 +40,27 @@ public class CubesManager : MonoBehaviour, IGameManager
     public void RemoveCube(Transform cube)
     {
         cube.parent.SetParent(null);
-        if (cube == GetBottomCube())
+        if (_cubes.Count > 1)
         {
-            cube.GetComponent<Collect>().isCollectingCubes = false;
+            if (cube == GetBottomCube())
+            {
+                cube.GetComponent<Collect>().isCollectingCubes = false;
+                cube.GetComponent<TrailRenderer>().enabled = false;
+            }
+            
+            _cubes.RemoveAt(_cubes.IndexOf(cube));
+            SetMainCube();
         }
-        _cubes.RemoveAt(_cubes.IndexOf(cube));
-        SetMainCube();
     }
 
     private Transform GetBottomCube()
     {
         return _cubes[0];
+    }
+
+    public int GetCubesCount()
+    {
+        return _cubes.Count;
     }
 
     private void ReconstructPlayer(Transform cube)
@@ -63,6 +74,7 @@ public class CubesManager : MonoBehaviour, IGameManager
     {
         MainCube = GetBottomCube().gameObject;
         MainCube.GetComponent<Collect>().isCollectingCubes = true;
+        MainCube.GetComponent<TrailRenderer>().enabled = true;
     }
 
 }

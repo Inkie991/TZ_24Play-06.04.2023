@@ -20,7 +20,6 @@ public class UIManager : MonoBehaviour, IGameManager
         var canvas = Instantiate(_canvasPrefab);
         DontDestroyOnLoad(canvas);
         _startScreen = canvas.transform.GetChild(0).gameObject;
-        Debug.Log(_startScreen.activeSelf);
         _endScreen = canvas.transform.GetChild(1).gameObject;
 
         Status = ManagerStatus.Started;

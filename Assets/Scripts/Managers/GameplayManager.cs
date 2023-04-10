@@ -35,7 +35,6 @@ public class GameplayManager : MonoBehaviour, IGameManager
         {
             case GameStatus.Initilaze:
                 //Player.transform.position += Vector3.forward * (7 * Time.deltaTime);
-                //Managers.Cubes.MainCube.transform.position += Vector3.forward * (7 * Time.deltaTime);
                 break;
             case GameStatus.Start:      
                 break;

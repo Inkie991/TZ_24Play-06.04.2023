@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class MovementController: MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _warp;
     [SerializeField] private float speed;
 
     private bool _isLocked;
@@ -35,6 +36,7 @@ public class MovementController: MonoBehaviour
         EventManager.AddListener<PlayerLoseEvent>(OnPlayerLose);
         _isLocked = true;
         _sequence = DOTween.Sequence();
+        _warp.Stop();
     }
 
     private void OnDestroy()
@@ -152,11 +154,13 @@ public class MovementController: MonoBehaviour
     {
         _isLocked = true;
         InputPoint.Reset();
+        _warp.Stop();
     }
     
     void UnlockMovement()
     {
         _isLocked = false;
+        _warp.Play();
     }
 
 }
